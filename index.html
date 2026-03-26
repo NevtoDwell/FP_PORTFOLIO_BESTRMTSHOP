@@ -438,13 +438,18 @@
 
             const interval = setInterval(() => {
                 if (i <= 360) { loaderElement.style.background = `conic-gradient(#ad50c6 ${i}deg, #e6e7eb 0deg)`; i += 5; } 
-                else {
-                    clearInterval(interval);
-                    preloader.classList.add('morph-animation');
-                    preloader.classList.add('preloader-hidden');
-                    setTimeout(() => document.getElementById("content").classList.add('content-visible'), 600);
-                    setTimeout(() => { document.body.classList.remove('no-scroll'); preloader.classList.add('morph-blur'); }, 1200);
-                }
+                // Найди этот кусок в конце интервала:
+else {
+    clearInterval(interval);
+    preloader.classList.add('morph-animation');
+    
+    // Попробуй увеличить задержку здесь или добавить:
+    requestAnimationFrame(() => {
+        preloader.classList.add('preloader-hidden');
+    });
+    
+    setTimeout(() => document.getElementById("content").classList.add('content-visible'), 1150); // чуть позже
+}
             }, 10);
         });
     </script>
