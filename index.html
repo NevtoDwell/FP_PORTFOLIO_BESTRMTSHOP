@@ -442,7 +442,7 @@
 else {
     clearInterval(interval);
     preloader.classList.add('morph-animation');
-    
+    document.body.classList.remove('no-scroll');
     // Попробуй увеличить задержку здесь или добавить:
     requestAnimationFrame(() => {
         preloader.classList.add('preloader-hidden');
